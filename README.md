@@ -38,3 +38,4 @@ npm run typecheck
 npm run build
 ```
 # telangana-pharmacological-society
+# telangana-pharmacological-society
