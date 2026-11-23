@@ -1,0 +1,2 @@
+type Notification={subject:string;text:string};
+export async function notifySociety({subject,text}:Notification){const apiKey=process.env.RESEND_API_KEY,from=process.env.EMAIL_FROM,to=process.env.EMAIL_TO;if(!apiKey||!from||!to)return {sent:false};const response=await fetch('https://api.resend.com/emails',{method:'POST',headers:{authorization:`Bearer ${apiKey}`,'content-type':'application/json'},body:JSON.stringify({from,to:[to],subject,text}),cache:'no-store'});return {sent:response.ok}}

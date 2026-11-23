@@ -1,0 +1,3 @@
+import {PageIntro} from '@/components/page-intro';
+export const metadata={title:'Terms | Telangana Pharmacological Society'};
+export default function TermsPage(){return <><PageIntro eyebrow="Website information" title="Terms of use" description="A terms notice must be reviewed and approved by the Society before launch."/><section className="section"><div className="wrap prose"><p>Website materials are intended for general academic and Society information. No event, membership category, fee, service commitment or registration is currently offered through this website.</p><p>These draft terms are a placeholder and require Society and legal review before publication.</p><div className="review-note">Status: placeholder for Society and legal review.</div></div></section></>}

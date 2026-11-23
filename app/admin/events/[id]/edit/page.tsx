@@ -1,0 +1,6 @@
+import {notFound} from 'next/navigation';
+import {PageIntro} from '@/components/page-intro';
+import {AdminEventForm} from '@/components/admin-event-form';
+import {AdminEventProgram} from '@/components/admin-event-program';
+import {createSupabaseServerClient,hasSupabaseConfig} from '@/lib/supabase/server';
+export default async function EditEvent({params}:{params:Promise<{id:string}>}){const {id}=await params;if(!hasSupabaseConfig())notFound();const db=await createSupabaseServerClient();const [{data:event},{data:speakers},{data:schedule}]=await Promise.all([db.from('events').select('*').eq('id',id).maybeSingle(),db.from('event_speakers').select('id,name,title').eq('event_id',id).order('display_order'),db.from('event_schedule').select('id,title,starts_at').eq('event_id',id).order('display_order')]);if(!event)notFound();return <><PageIntro eyebrow="Admin / Events" title="Edit event" description="Manage event details, speakers and schedule. Changes to published events appear publicly."/><section className="section"><div className="wrap admin-editor-wrap"><AdminEventForm event={event}/><div className="review-note">Attendee list: <a href={`/admin/events/${id}/registrations`}>view registrations →</a></div><AdminEventProgram eventId={id} speakers={speakers||[]} schedule={schedule||[]}/></div></section></>}
