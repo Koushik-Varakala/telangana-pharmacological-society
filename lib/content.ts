@@ -20,6 +20,7 @@ export const committeeConfirmation = 'Committee names, titles, biographies and p
 
 export const emptyCopy = {
   events: 'New academic events and programmes will be announced here.',
+  announcements: 'Approved Society announcements will appear here when available.',
   publications: 'Approved Society publications will be listed here when available.',
   resources: 'Approved downloadable materials will appear here when supplied.',
   gallery: 'Approved Society event photographs will be shared here when available.',

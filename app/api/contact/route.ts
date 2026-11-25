@@ -2,7 +2,9 @@ import {NextResponse} from 'next/server';
 import {createSupabaseServerClient,hasSupabaseConfig} from '@/lib/supabase/server';
 import {text,validEmail} from '@/lib/validation';
 import {notifySociety} from '@/lib/notifications';
+import {submissionGuard} from '@/lib/public-readiness';
 export async function POST(request:Request){
+  const blocked=submissionGuard(request,'contact');if(blocked)return NextResponse.json({error:blocked.message},{status:blocked.status});
   if(!hasSupabaseConfig())return NextResponse.json({error:'The contact form is not available yet. Official contact details have not been provided.'},{status:503});
   const body=await request.formData();
   if(text(body.get('website')))return NextResponse.json({ok:true});
