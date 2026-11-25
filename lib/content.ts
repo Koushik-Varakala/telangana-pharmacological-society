@@ -1,7 +1,7 @@
 export const society = {
   name: 'Telangana Pharmacological Society',
   tagline: 'Science • Education • Better Health',
-  emblem: '/images/tps-emblem-temporary.png',
+  emblem: '/images/tps-emblem.png',
 };
 
 export const objectives = [
